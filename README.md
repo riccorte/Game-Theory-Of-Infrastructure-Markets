@@ -138,30 +138,19 @@ The main simulation logic is implemented in:
 montecarlo_simulation.py
 ```
 
+
 ## Jupyter Notebooks
 
-The repository contains several notebooks that organize the workflow from dataset generation to model evaluation and regime analysis.
+The repository includes several Jupyter notebooks that support the simulation, data preparation, and machine-learning analysis.
 
-### `ML_analysis.ipynb`
+| Notebook | Description |
+|---|---|
+| `ML_analysis.ipynb` | Generates the simulation-based dataset used for the machine-learning analysis. It uses the functions in `dataset_generator.py` to produce market observables and latent target parameters. |
+| `prepare_data.ipynb` | Loads the raw `.npz` dataset, extracts features and targets, splits the data into training, validation, and test sets, and standardizes the features. |
+| `linear_regression.ipynb` | Implements a linear-regression baseline to predict the latent parameters of the market from simulated observables. It is used as a first interpretable benchmark. |
+| `NN_analysis.ipynb` | Trains a neural-network regression model for the same parameter-estimation task, allowing for nonlinear relations between market features and latent parameters. |
+| `market_clustering.ipynb` | Explores the simulated market dynamics through clustering, time-series plots, phase-space analysis, and visualizations of market regimes. |
+| `regime_classification.ipynb` | Reformulates the problem as a binary classification task, distinguishing between cost-driven and congestion-driven regimes using logistic regression. |
+| `nn_regime_classification.ipynb` | Uses a neural-network classifier to identify market regimes from simulated market observables and compares its performance with the logistic-regression baseline. |
 
-This notebook is used to generate the simulation-based dataset used in the machine-learning part of the project.
-
-It calls the functions defined in `dataset_generator.py`, in particular:
-
-- `generate_sample()`, which produces one simulated market observation;
-- `generate_dataset()`, which repeats the simulation over many parameter configurations;
-- `save_dataset()`, which stores the resulting feature matrix and target variables.
-
-The generated dataset contains observable market-level features such as:
-
-- mean, standard deviation, and amplitude of the Price of Anarchy;
-- mean, standard deviation, and amplitude of the average Nash margin;
-- mean, standard deviation, and amplitude of the number of providers;
-- mean, standard deviation, and amplitude of market churn.
-
-The target variables are the latent structural parameters:
-
-```text
-theta_cost
-theta_cong
-
+These notebooks provide the computational workflow of the project: first generating and preparing data, then applying regression, clustering, and classification methods to study the behavior of infrastructure markets.
