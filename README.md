@@ -136,3 +136,32 @@ The main simulation logic is implemented in:
 
 ```text
 montecarlo_simulation.py
+
+
+## Jupyter Notebooks
+
+The repository contains several notebooks that organize the workflow from dataset generation to model evaluation and regime analysis.
+
+### `ML_analysis.ipynb`
+
+This notebook is used to generate the simulation-based dataset used in the machine-learning part of the project.
+
+It calls the functions defined in `dataset_generator.py`, in particular:
+
+- `generate_sample()`, which produces one simulated market observation;
+- `generate_dataset()`, which repeats the simulation over many parameter configurations;
+- `save_dataset()`, which stores the resulting feature matrix and target variables.
+
+The generated dataset contains observable market-level features such as:
+
+- mean, standard deviation, and amplitude of the Price of Anarchy;
+- mean, standard deviation, and amplitude of the average Nash margin;
+- mean, standard deviation, and amplitude of the number of providers;
+- mean, standard deviation, and amplitude of market churn.
+
+The target variables are the latent structural parameters:
+
+```text
+theta_cost
+theta_cong
+
