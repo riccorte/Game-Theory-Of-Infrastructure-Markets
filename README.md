@@ -136,7 +136,7 @@ The main simulation logic is implemented in:
 
 ```text
 montecarlo_simulation.py
-
+```
 
 ## Jupyter Notebooks
 
